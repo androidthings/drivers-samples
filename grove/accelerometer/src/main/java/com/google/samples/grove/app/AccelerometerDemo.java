@@ -1,6 +1,6 @@
 package com.google.samples.grove.app;
 
-import com.google.brillo.driver.grove.accelerometer.Mma7660Fc;
+import com.google.brillo.driver.grove.accelerometer.Mma7660FcAccelerometerDriver;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,8 +8,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.hardware.userdriver.sensors.AccelerometerDriver;
-import android.hardware.userdriver.UserDriverManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -22,8 +20,7 @@ import java.io.IOException;
 public class AccelerometerDemo extends Activity implements SensorEventListener {
     private static final String TAG = AccelerometerDemo.class.getSimpleName();
 
-    private Mma7660Fc mMma770Fc;
-    private AccelerometerDriver mAccelerometerDriver;
+    private Mma7660FcAccelerometerDriver mAccelerometerDriver;
     private SensorManager mSensorManager;
 
     @Override
@@ -43,9 +40,8 @@ public class AccelerometerDemo extends Activity implements SensorEventListener {
             }
         });
         try {
-            mMma770Fc = new Mma7660Fc(BoardDefaults.getI2CPort());
-            mAccelerometerDriver = mMma770Fc.createAccelerometerDriver();
-            UserDriverManager.getManager().registerSensorDriver(mAccelerometerDriver);
+            mAccelerometerDriver = new Mma7660FcAccelerometerDriver(BoardDefaults.getI2CPort());
+            mAccelerometerDriver.register();
             Log.i(TAG, "Accelerometer driver registered");
         } catch (IOException e) {
             Log.e(TAG, "Error initializing accelerometer driver: ", e);
@@ -55,14 +51,16 @@ public class AccelerometerDemo extends Activity implements SensorEventListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mSensorManager.unregisterListener(this);
-        UserDriverManager.getManager().unregisterSensorDriver(mAccelerometerDriver);
-        try {
-            mMma770Fc.close();
-        }  catch (IOException e) {
-            Log.e(TAG, "Error closing accelerometer driver: ", e);
-        } finally {
-            mMma770Fc = null;
+        if (mAccelerometerDriver != null) {
+            mSensorManager.unregisterListener(this);
+            mAccelerometerDriver.unregister();
+            try {
+                mAccelerometerDriver.close();
+            } catch (IOException e) {
+                Log.e(TAG, "Error closing accelerometer driver: ", e);
+            } finally {
+                mAccelerometerDriver = null;
+            }
         }
     }
 
