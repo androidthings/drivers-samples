@@ -14,7 +14,7 @@ class BoardDefaults {
                 return "IO5";
             case "rpi3":
                 return "PWM0";
-            case "nxp":
+            case "imx6ul":
                 return "??"; //TODO
             default:
                 throw new UnsupportedOperationException("Unknown device: " + Build.DEVICE);
