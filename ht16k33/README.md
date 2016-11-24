@@ -9,8 +9,6 @@ Pre-requisites
 --------------
 
 - Android Things compatible board
-- Android Things SDK, currently offered through a private Maven repo. See
-  instructions at [go/brillo-gradle-setup]
 - Android Studio 2.2+
 - Java 8
 - 1 [segment display with I2C backpack](https://www.adafruit.com/product/1270)
@@ -33,7 +31,7 @@ If you prefer to run on the command line, type
 
 ```bash
 ./gradlew installDebug
-adb shell am start com.google.samples.segmentdisplay/.SegmentDisplayActivity
+adb shell am start com.example.androidthings.driversamples/.SegmentDisplayActivity
 ```
 
 If you have everything set up correctly, the segment display will show "ABCD".

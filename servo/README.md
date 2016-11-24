@@ -7,8 +7,6 @@ Pre-requisites
 --------------
 
 - Android Things compatible board
-- Android Things SDK, currently offered through a private Maven repo. See
-  instructions at [go/brillo-gradle-setup]
 - Android Studio 2.2+
 - Java 8
 - 1 [servo](https://www.adafruit.com/products/169)
@@ -32,7 +30,7 @@ If you prefer to run on the command line, type
 
 ```bash
 ./gradlew installDebug
-adb shell am start com.google.samples.servo/.ServoActivity
+adb shell am start com.example.androidthings.driversamples/.ServoActivity
 ```
 
 If you have everything set up correctly, you will see the servo periodically update its position.

@@ -8,8 +8,6 @@ Pre-requisites
 --------------
 
 - Android Things compatible board
-- Android Things SDK, currently offered through a private Maven repo. See
-  instructions at [go/brillo-gradle-setup]
 - Android Studio 2.2+
 - Java 8
 - 1 [Speaker](https://www.adafruit.com/products/160)
@@ -32,15 +30,15 @@ If you prefer to run on the command line, type
 
 ```bash
 ./gradlew installDebug
-adb shell am start com.google.samples.pwm_speaker/.SpeakerActivity
+adb shell am start com.example.androidthings.driversamples/.SpeakerActivity
 ```
 
 If you have everything set up correctly, you will hear the speaker play a series of notes. To play
 the tune again, re-run the app from AndroidStudio. If you prefer the command line, use
 
 ```bash
-adb shell am force-stop com.google.samples.pwm_speaker
-adb shell am start com.google.samples.pwm_speaker/.SpeakerActivity
+adb shell am force-stop com.example.androidthings.driversamples
+adb shell am start com.example.androidthings.driversamples/.SpeakerActivity
 ```
 
 

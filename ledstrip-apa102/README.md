@@ -9,8 +9,6 @@ Pre-requisites
 --------------
 
 - Android Things compatible board
-- Android Things SDK, currently offered through a private Maven repo. See
-  instructions at [go/brillo-gradle-setup]
 - Android Studio 2.2+
 - Java 8
 - 1 [apa102 compatible RGB Led strip](https://www.adafruit.com/product/2241)
@@ -19,7 +17,7 @@ Pre-requisites
 Schematics
 ----------
 
-![Schematics for Intel Edison](SPI_edison.png)
+![Schematics for Intel Edison](edison_schematics.png)
 
 The 5v and GND from the Edison are sufficient for driving a few LEDs,
 connect these pins to the power pins on the APA102 connector.
@@ -34,11 +32,11 @@ If you prefer to run on the command line, type
 
 ```bash
 ./gradlew installDebug
-adb shell am start com.google.samples.spi.apa102/.MainActivity
+adb shell am start com.example.androidthings.driversamples/.MainActivity
 ```
 
 Press the RM onboard button on the Edison. 
-When you press the button, the logs will indicate
+When you press the button, the logs will indicate that
 the button was pressed and will then blink the LEDs in various patterns.
 
 
