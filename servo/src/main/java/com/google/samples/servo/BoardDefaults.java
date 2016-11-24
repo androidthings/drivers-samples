@@ -27,7 +27,7 @@ class BoardDefaults {
     public static String getPwmPin() {
         switch (Build.DEVICE) {
             case "edison":
-                return "IO5";
+                return "IO6";
             case "rpi3":
                 return "PWM0";
             case "imx6ul":
