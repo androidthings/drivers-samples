@@ -48,6 +48,5 @@ android {
 }
 
 dependencies {
-    compile 'com.google.brillo:iot-sdk:0.8'
-    compile 'com.google.brillo.driver:ssd1306:0.1'
+    compile 'com.google.androidthings.driver:ssd1306:0.2'
 }

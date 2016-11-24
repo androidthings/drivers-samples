@@ -16,8 +16,6 @@
 
 package com.example.androidthings.driversamples;
 
-import com.google.brillo.driver.grove.accelerometer.Mma7660FcAccelerometerDriver;
-
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
@@ -26,6 +24,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.google.androidthings.driver.grove.accelerometer.Mma7660FcAccelerometerDriver;
 
 import java.io.IOException;
 

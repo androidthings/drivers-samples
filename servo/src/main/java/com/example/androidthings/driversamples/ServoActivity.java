@@ -21,7 +21,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-import com.google.brillo.driver.servo.Servo;
+import com.google.androidthings.driver.servo.Servo;
 
 import java.io.IOException;
 

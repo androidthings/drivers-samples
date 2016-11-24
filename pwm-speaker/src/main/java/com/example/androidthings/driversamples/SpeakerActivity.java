@@ -22,7 +22,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
 
-import com.google.brillo.driver.speaker.Speaker;
+import com.google.androidthings.driver.speaker.Speaker;
 
 import java.io.IOException;
 

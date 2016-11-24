@@ -16,12 +16,12 @@
 
 package com.example.androidthings.driversamples;
 
-import com.google.brillo.driver.grove.lcdrgb.LcdRgbBacklight;
-
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.google.androidthings.driver.grove.lcdrgb.LcdRgbBacklight;
 
 import java.io.IOException;
 
@@ -44,9 +44,5 @@ public class LcdRgbBacklightDemo extends Activity {
         } catch (IOException|IllegalStateException e) {
             Log.e(TAG, "driver error: ", e);
         }
-    }
-
-    @Override
-    public void onDestroy() {
     }
 }

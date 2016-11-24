@@ -39,6 +39,5 @@ android {
 }
 
 dependencies {
-    compile 'com.google.brillo:iot-sdk:0.8'
-    compile 'com.google.iot.driver:ledstrip-apa102:0.5'
+    compile 'com.google.androidthings.driver:ledstrip-apa102:0.2'
 }

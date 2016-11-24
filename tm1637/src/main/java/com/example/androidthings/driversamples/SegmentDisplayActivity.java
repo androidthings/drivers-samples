@@ -20,7 +20,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.brillo.driver.tm1637.NumericDisplay;
+import com.google.androidthings.driver.tm1637.NumericDisplay;
 
 import java.io.IOException;
 
@@ -51,6 +51,7 @@ public class SegmentDisplayActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         if (mSegmentDisplay != null) {
             Log.i(TAG, "Closing display");
             try {

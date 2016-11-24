@@ -25,7 +25,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.brillo.driver.bmx280.Bmx280TemperatureSensorDriver;
+import com.google.androidthings.driver.bmx280.Bmx280TemperatureSensorDriver;
 
 import java.io.IOException;
 
