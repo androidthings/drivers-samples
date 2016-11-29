@@ -17,10 +17,10 @@ Schematics
 ----------
 
 ![Schematics for Intel Edison](edison_schematics.png)
+![Schematics for Raspberry Pi 3](rpi3_schematics.png)
 
-The 5v and GND from the Edison are sufficient for driving a few LEDs,
+The 5v and GND from the Edison and Raspberry Pi 3 are sufficient for driving a few LEDs,
 connect these pins to the power pins on the APA102 connector.
-
 
 Build and install
 =================
