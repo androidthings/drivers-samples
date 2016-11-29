@@ -10,7 +10,6 @@ Pre-requisites
 
 - Android Things compatible board
 - Android Studio 2.2+
-- Java 8
 - 1 [bmp280 temperature sensor](https://www.adafruit.com/product/2651)
 - jumper wires
 - 1 breadboard

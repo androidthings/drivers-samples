@@ -1,18 +1,17 @@
-Segment display sample for Android Things
-=========================================
+Servo for Android Things
+========================
 
-This Android Things sample demonstrates how to use a segment display ht16k33
-with an I2C backpack.
-
+This sample demonstrates how to control a servo using PWM with Android Things.
 
 Pre-requisites
 --------------
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 [segment display with I2C backpack](https://www.adafruit.com/product/1270)
+- 1 [servo](https://www.adafruit.com/products/169)
 - jumper wires
 - 1 breadboard
+
 
 Schematics
 ----------
@@ -30,10 +29,10 @@ If you prefer to run on the command line, type
 
 ```bash
 ./gradlew installDebug
-adb shell am start com.example.androidthings.driversamples/.SegmentDisplayActivity
+adb shell am start com.example.androidthings.driversamples/.ServoActivity
 ```
 
-If you have everything set up correctly, the segment display will show "ABCD".
+If you have everything set up correctly, you will see the servo periodically update its position.
 
 
 License

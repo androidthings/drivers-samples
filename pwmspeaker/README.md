@@ -1,25 +1,24 @@
-Segment display sample for Android Things
-=========================================
+PWM Speaker Demo for Android Things
+=============================================
 
-This Android Things sample demonstrates how to use a segment display ht16k33
-with an I2C backpack.
-
+This sample demonstrates how to control a speaker/buzzer using PWM with
+Android Things.
 
 Pre-requisites
 --------------
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 [segment display with I2C backpack](https://www.adafruit.com/product/1270)
+- 1 [Speaker](https://www.adafruit.com/products/160)
 - jumper wires
 - 1 breadboard
+
 
 Schematics
 ----------
 
 ![Schematics for Intel Edison](edison_schematics.png)
 ![Schematics for Raspberry Pi 3](rpi3_schematics.png)
-
 
 Build and install
 =================
@@ -30,10 +29,16 @@ If you prefer to run on the command line, type
 
 ```bash
 ./gradlew installDebug
-adb shell am start com.example.androidthings.driversamples/.SegmentDisplayActivity
+adb shell am start com.example.androidthings.driversamples/.SpeakerActivity
 ```
 
-If you have everything set up correctly, the segment display will show "ABCD".
+If you have everything set up correctly, you will hear the speaker play a series of notes. To play
+the tune again, re-run the app from AndroidStudio. If you prefer the command line, use
+
+```bash
+adb shell am force-stop com.example.androidthings.driversamples
+adb shell am start com.example.androidthings.driversamples/.SpeakerActivity
+```
 
 
 License

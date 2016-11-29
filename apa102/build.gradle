@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
-    compile 'com.google.androidthings.driver:bmx280:0.3'
+    compile 'com.google.androidthings.driver:apa102:0.3'
     provided 'com.android.things:androidthings:0.1-preview'
 }
+

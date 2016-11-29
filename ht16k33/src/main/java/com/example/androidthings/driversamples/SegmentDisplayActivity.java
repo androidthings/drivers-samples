@@ -55,6 +55,7 @@ public class SegmentDisplayActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         if (mSegmentDisplay != null) {
             Log.i(TAG, "Closing display");
             try {

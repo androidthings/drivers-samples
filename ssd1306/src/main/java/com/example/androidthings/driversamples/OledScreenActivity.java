@@ -44,7 +44,6 @@ public class OledScreenActivity extends Activity {
     private Ssd1306 mScreen;
 
     private Handler mHandler = new Handler();
-    private Runnable mRunnable = this::draw;
 
     enum Modes {
         None,
@@ -62,14 +61,14 @@ public class OledScreenActivity extends Activity {
             throw new RuntimeException(e);
         }
         Log.d(TAG, "OLED screen service created");
-        mHandler.post(mRunnable);
+        mHandler.post(mDrawRunnable);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         // remove pending runnable from the handler
-        mHandler.removeCallbacks(mRunnable);
+        mHandler.removeCallbacks(mDrawRunnable);
         // Close the device.
         try {
             mScreen.close();
@@ -150,31 +149,34 @@ public class OledScreenActivity extends Activity {
         }
     }
 
-    /**
-     * Updates the display and tick counter.
-     */
-    private void draw() {
-        // exit Runnable if the device is already closed
-        if (mScreen == null) {
-            return;
-        }
-        tick++;
-        try {
-            switch (mMode) {
-                case TestPixels:
-                    drawTestPixels();
-                    break;
-                case TestBmp:
-                    drawMovingBmp();
-                    break;
-                default:
-                    drawCrosshairs();
-                    break;
+    private Runnable mDrawRunnable = new Runnable() {
+        /**
+         * Updates the display and tick counter.
+         */
+        @Override
+        public void run() {
+            // exit Runnable if the device is already closed
+            if (mScreen == null) {
+                return;
             }
-            mScreen.show();
-            mHandler.postDelayed(mRunnable, 1000 / FPS);
-        } catch (IOException e) {
-            Log.e(TAG, "Exception during screen update", e);
+            tick++;
+            try {
+                switch (mMode) {
+                    case TestPixels:
+                        drawTestPixels();
+                        break;
+                    case TestBmp:
+                        drawMovingBmp();
+                        break;
+                    default:
+                        drawCrosshairs();
+                        break;
+                }
+                mScreen.show();
+                mHandler.postDelayed(this, 1000 / FPS);
+            } catch (IOException e) {
+                Log.e(TAG, "Exception during screen update", e);
+            }
         }
-    }
+    };
 }
