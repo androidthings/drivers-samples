@@ -34,8 +34,7 @@ If you prefer to run on the command line, type
 adb shell am start com.example.androidthings.driversamples/.TemperatureActivity
 ```
 
-If you have everything set up correctly, the segment display will show "ABCD".
-
+If you have everything set up correctly, the current temperature will be logged to logcat.
 
 License
 -------
