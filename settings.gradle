@@ -1,4 +1,6 @@
 include ':bmx280'
+include ':captouch'
+include ':gps'
 include ':ht16k33'
 include ':tm1637'
 include ':apa102'
