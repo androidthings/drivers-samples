@@ -9,7 +9,6 @@ Pre-requisites
 
 - Android Things compatible board
 - Android Studio 2.2+
-- Java 8
 - 1 [SSD1306 OLED screen](https://www.adafruit.com/product/326)
 - jumper wires
 - 1 breadboard
@@ -17,7 +16,9 @@ Pre-requisites
 
 Schematics
 ----------
-![Sample schematics](sample_schematics.png)
+
+![Schematics for Intel Edison](edison_schematics.png)
+![Schematics for Raspberry Pi 3](rpi3_schematics.png)
 
 
 Build and install
