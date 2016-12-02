@@ -25,7 +25,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.androidthings.driver.bmx280.Bmx280TemperatureSensorDriver;
+import com.google.androidthings.driver.bmx280.Bmx280SensorDriver;
 
 import java.io.IOException;
 
@@ -35,7 +35,7 @@ import java.io.IOException;
 public class TemperatureActivity extends Activity implements SensorEventListener {
     private static final String TAG = TemperatureActivity.class.getSimpleName();
 
-    private Bmx280TemperatureSensorDriver mTemperatureSensorDriver;
+    private Bmx280SensorDriver mTemperatureSensorDriver;
     private SensorManager mSensorManager;
 
     @Override
@@ -57,8 +57,8 @@ public class TemperatureActivity extends Activity implements SensorEventListener
         });
 
         try {
-            mTemperatureSensorDriver = new Bmx280TemperatureSensorDriver(BoardDefaults.getI2CPort());
-            mTemperatureSensorDriver.register();
+            mTemperatureSensorDriver = new Bmx280SensorDriver(BoardDefaults.getI2CPort());
+            mTemperatureSensorDriver.registerTemperatureSensor();
         } catch (IOException e) {
             Log.e(TAG, "Error configuring sensor", e);
         }
@@ -70,7 +70,7 @@ public class TemperatureActivity extends Activity implements SensorEventListener
         Log.i(TAG, "Closing sensor");
         if (mTemperatureSensorDriver != null) {
             mSensorManager.unregisterListener(this);
-            mTemperatureSensorDriver.unregister();
+            mTemperatureSensorDriver.unregisterTemperatureSensor();
             try {
                 mTemperatureSensorDriver.close();
             } catch (IOException e) {
