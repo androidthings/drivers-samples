@@ -15,7 +15,7 @@
  */
 
 include ':bmx280'
-include ':captouch'
+include ':cap12xx'
 include ':gps'
 include ':ht16k33'
 include ':tm1637'
