@@ -28,14 +28,13 @@ public class BoardDefaults {
      * Return the preferred I2C port for each board.
      */
     public static String getI2CPort() {
-        // TODO: confirm DEVICE and preferred port for NXP
         switch (Build.DEVICE) {
             case DEVICE_EDISON:
                 return "I2C6";
             case DEVICE_RPI3:
                 return "I2C1";
             case DEVICE_NXP:
-                return "??";
+                return "I2C2";
             default:
                 throw new IllegalStateException("Unknown Build.DEVICE " + Build.DEVICE);
         }

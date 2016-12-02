@@ -28,14 +28,13 @@ public class BoardDefaults {
      * Return the preferred Data GPIO pin for each board.
      */
     public static String getGPIOforData() {
-        // TODO: confirm DEVICE and preferred port for NXP
+
         switch (Build.DEVICE) {
             case DEVICE_EDISON:
                 return "IO7";
             case DEVICE_RPI3:
                 return "BCM20";
-            case DEVICE_NXP:
-                return "??";
+            // TODO: DEVICE_NXP:
             default:
                 throw new IllegalStateException("Unknown Build.DEVICE " + Build.DEVICE);
         }
@@ -45,14 +44,12 @@ public class BoardDefaults {
      * Return the preferred Clock GPIO pin for each board.
      */
     public static String getGPIOforClock() {
-        // TODO: confirm DEVICE and preferred port for NXP
         switch (Build.DEVICE) {
             case DEVICE_EDISON:
                 return "IO6";
             case DEVICE_RPI3:
                 return "BCM21";
-            case DEVICE_NXP:
-                return "??";
+            // TODO: DEVICE_NXP:
             default:
                 throw new IllegalStateException("Unknown Build.DEVICE " + Build.DEVICE);
         }

@@ -28,14 +28,12 @@ public class BoardDefaults {
      * Return the UART for current board.
      */
     public static String getUartName() {
-        // TODO: confirm preferred port for NXP
         switch (Build.DEVICE) {
             case DEVICE_EDISON:
                 return "UART1";
             case DEVICE_RPI3:
                 return "UART0";
-            case DEVICE_NXP:
-                return "???";
+            // TODO: DEVICE_NXP:
             default:
                 throw new IllegalStateException("Unknown Build.DEVICE " + Build.DEVICE);
         }
