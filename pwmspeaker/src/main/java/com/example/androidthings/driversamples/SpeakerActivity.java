@@ -22,7 +22,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
 
-import com.google.androidthings.driver.pwmspeaker.Speaker;
+import com.google.android.things.driver.pwmspeaker.Speaker;
 
 import java.io.IOException;
 

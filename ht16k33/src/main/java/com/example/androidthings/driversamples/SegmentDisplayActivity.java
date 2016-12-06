@@ -20,7 +20,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.androidthings.driver.ht16k33.AlphanumericDisplay;
+import com.google.android.things.driver.ht16k33.AlphanumericDisplay;
 
 import java.io.IOException;
 
