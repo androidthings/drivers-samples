@@ -37,6 +37,6 @@ android {
 
 dependencies {
     compile 'com.google.android.things.contrib:driver-apa102:0.1'
-    provided 'com.android.things:androidthings:0.3-preview'
+    provided 'com.google.android.things:androidthings:0.1-preview'
 }
 
