@@ -34,21 +34,22 @@ import java.io.IOException;
 public class OledScreenActivity extends Activity {
     private static final String TAG = "OledScreenActivity";
     private static final int FPS = 30; // Frames per second on draw thread
-    private static final int BMPS = 2; // Frequency for changes of bitmaps in test
+    private static final int BITMAP_FRAMES_PER_MOVE = 4; // Frames to show bitmap before moving it
 
     private boolean mExpandingPixels = true;
-    private int mPixelMod = 1;
-    private int mBmpMod = 0;
-    private int tick = 0;
-    private Modes mMode = Modes.TestBmp;
+    private int mDotMod = 1;
+    private int mBitmapMod = 0;
+    private int mTick = 0;
+    private Modes mMode = Modes.BITMAP;
     private Ssd1306 mScreen;
 
     private Handler mHandler = new Handler();
+    private Bitmap mBitmap;
 
     enum Modes {
-        None,
-        TestPixels,
-        TestBmp
+        CROSSHAIRS,
+        DOTS,
+        BITMAP
     }
 
     @Override
@@ -60,7 +61,7 @@ public class OledScreenActivity extends Activity {
             Log.e(TAG, "Error while opening screen", e);
             throw new RuntimeException(e);
         }
-        Log.d(TAG, "OLED screen service created");
+        Log.d(TAG, "OLED screen activity created");
         mHandler.post(mDrawRunnable);
     }
 
@@ -83,14 +84,13 @@ public class OledScreenActivity extends Activity {
      * Draws crosshair pattern.
      */
     private void drawCrosshairs() {
-        // Draw simple crosshair pattern.
-        int y = tick % mScreen.getLcdHeight();
         mScreen.clearPixels();
+        int y = mTick % mScreen.getLcdHeight();
         for (int x = 0; x < mScreen.getLcdWidth(); x++) {
             mScreen.setPixel(x, y, true);
             mScreen.setPixel(x, mScreen.getLcdHeight() - (y + 1), true);
         }
-        int x = tick % mScreen.getLcdWidth();
+        int x = mTick % mScreen.getLcdWidth();
         for (y = 0; y < mScreen.getLcdHeight(); y++) {
             mScreen.setPixel(x, y, true);
             mScreen.setPixel(mScreen.getLcdWidth() - (x + 1), y, true);
@@ -100,28 +100,28 @@ public class OledScreenActivity extends Activity {
     /**
      * Draws expanding and contracting pixels.
      */
-    private void drawTestPixels() {
+    private void drawExpandingDots() {
         if (mExpandingPixels) {
             for (int x = 0; x < mScreen.getLcdWidth(); x++) {
-                for (int y = 0; y < mScreen.getLcdHeight() && mMode == Modes.TestPixels; y++) {
-                    mScreen.setPixel(x, y, (x % mPixelMod) == 1 && (y % mPixelMod) == 1);
+                for (int y = 0; y < mScreen.getLcdHeight() && mMode == Modes.DOTS; y++) {
+                    mScreen.setPixel(x, y, (x % mDotMod) == 1 && (y % mDotMod) == 1);
                 }
             }
-            mPixelMod++;
-            if (mPixelMod > mScreen.getLcdHeight()) {
+            mDotMod++;
+            if (mDotMod > mScreen.getLcdHeight()) {
                 mExpandingPixels = false;
-                mPixelMod = mScreen.getLcdHeight();
+                mDotMod = mScreen.getLcdHeight();
             }
         } else {
             for (int x = 0; x < mScreen.getLcdWidth(); x++) {
-                for (int y = 0; y < mScreen.getLcdHeight() && mMode == Modes.TestPixels; y++) {
-                    mScreen.setPixel(x, y, (x % mPixelMod) == 1 && (y % mPixelMod) == 1);
+                for (int y = 0; y < mScreen.getLcdHeight() && mMode == Modes.DOTS; y++) {
+                    mScreen.setPixel(x, y, (x % mDotMod) == 1 && (y % mDotMod) == 1);
                 }
             }
-            mPixelMod--;
-            if (mPixelMod < 1) {
+            mDotMod--;
+            if (mDotMod < 1) {
                 mExpandingPixels = true;
-                mPixelMod = 1;
+                mDotMod = 1;
             }
         }
     }
@@ -129,23 +129,23 @@ public class OledScreenActivity extends Activity {
     /**
      * Draws a BMP in one of three positions.
      */
-    private void drawMovingBmp() {
-        Bitmap sampleImage = BitmapFactory.decodeResource(getResources(), R.drawable.sampleimage);
+    private void drawMovingBitmap() {
+        if (mBitmap == null) {
+            mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.flower);
+        }
         // Move the bmp every few ticks
-        if (tick % BMPS == 0) {
+        if (mTick % BITMAP_FRAMES_PER_MOVE == 0) {
             mScreen.clearPixels();
-            for (int i = 0; i < 4; i++) {
-                if (i == mBmpMod) {
-                    int position = i * (int) ((double) sampleImage.getWidth() * 0.9);
-                    // Rolls back.
-                    if (i == 3) {
-                        position = (int) ((double) sampleImage.getWidth() * 0.9);
-                    }
-                    // Change the x-position but keep y-position at the top.
-                    BitmapHelper.setBmpData(mScreen, position, 0, sampleImage, false);
-                }
-            }
-            mBmpMod = (mBmpMod + 1) % 4;
+            // Move the bitmap back and forth based on mBitmapMod:
+            // 0 - left aligned
+            // 1 - centered
+            // 2 - right aligned
+            // 3 - centered
+            int diff = mScreen.getLcdWidth() - mBitmap.getWidth();
+            int mult = mBitmapMod == 3 ? 1 : mBitmapMod; // 0, 1, or 2
+            int offset = mult * (diff / 2);
+            BitmapHelper.setBmpData(mScreen, offset, 0, mBitmap, false);
+            mBitmapMod = (mBitmapMod + 1) % 4;
         }
     }
 
@@ -159,14 +159,14 @@ public class OledScreenActivity extends Activity {
             if (mScreen == null) {
                 return;
             }
-            tick++;
+            mTick++;
             try {
                 switch (mMode) {
-                    case TestPixels:
-                        drawTestPixels();
+                    case DOTS:
+                        drawExpandingDots();
                         break;
-                    case TestBmp:
-                        drawMovingBmp();
+                    case BITMAP:
+                        drawMovingBitmap();
                         break;
                     default:
                         drawCrosshairs();
