@@ -23,7 +23,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
 
-import com.google.android.things.driver.apa102.Apa102;
+import com.google.android.things.contrib.driver.apa102.Apa102;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

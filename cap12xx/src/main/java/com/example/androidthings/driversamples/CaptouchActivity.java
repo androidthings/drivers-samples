@@ -21,8 +21,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 
-import com.google.android.things.driver.cap12xx.Cap12xx;
-import com.google.android.things.driver.cap12xx.Cap12xxInputDriver;
+import com.google.android.things.contrib.driver.cap12xx.Cap12xx;
+import com.google.android.things.contrib.driver.cap12xx.Cap12xxInputDriver;
 
 import java.io.IOException;
 

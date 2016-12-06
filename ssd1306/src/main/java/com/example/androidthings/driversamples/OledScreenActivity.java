@@ -23,8 +23,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-import com.google.android.things.driver.ssd1306.BitmapHelper;
-import com.google.android.things.driver.ssd1306.Ssd1306;
+import com.google.android.things.contrib.driver.ssd1306.BitmapHelper;
+import com.google.android.things.contrib.driver.ssd1306.Ssd1306;
 
 import java.io.IOException;
 

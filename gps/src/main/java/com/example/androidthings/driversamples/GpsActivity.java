@@ -25,7 +25,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.things.driver.gps.NmeaGpsDriver;
+import com.google.android.things.contrib.driver.gps.NmeaGpsDriver;
 
 import java.io.IOException;
 

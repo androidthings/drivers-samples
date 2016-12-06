@@ -21,7 +21,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-import com.google.android.things.driver.pwmservo.Servo;
+import com.google.android.things.contrib.driver.pwmservo.Servo;
 
 import java.io.IOException;
 

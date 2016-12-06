@@ -25,7 +25,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.things.driver.bmx280.Bmx280SensorDriver;
+import com.google.android.things.contrib.driver.bmx280.Bmx280SensorDriver;
 
 import java.io.IOException;
 

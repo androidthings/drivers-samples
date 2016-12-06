@@ -20,7 +20,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.things.driver.tm1637.NumericDisplay;
+import com.google.android.things.contrib.driver.tm1637.NumericDisplay;
 
 import java.io.IOException;
 

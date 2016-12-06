@@ -25,7 +25,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.things.driver.mma7660fc.Mma7660FcAccelerometerDriver;
+import com.google.android.things.contrib.driver.mma7660fc.Mma7660FcAccelerometerDriver;
 
 import java.io.IOException;
 
