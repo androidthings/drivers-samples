@@ -33,7 +33,8 @@ public class BoardDefaults {
                 return "UART1";
             case DEVICE_RPI3:
                 return "UART0";
-            // TODO: DEVICE_NXP:
+            case DEVICE_NXP:
+                return "UART3";
             default:
                 throw new IllegalStateException("Unknown Build.DEVICE " + Build.DEVICE);
         }

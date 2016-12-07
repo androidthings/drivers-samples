@@ -34,7 +34,7 @@ public class BoardDefaults {
             case DEVICE_RPI3:
                 return "SPI0.0";
             case DEVICE_NXP:
-                return "SPI2_0";
+                return "SPI3_0";
             default:
                 throw new IllegalStateException("Unknown Build.DEVICE " + Build.DEVICE);
         }

@@ -34,7 +34,8 @@ public class BoardDefaults {
                 return "IO7";
             case DEVICE_RPI3:
                 return "BCM20";
-            // TODO: DEVICE_NXP:
+            case DEVICE_NXP:
+                return "GPIO4_IO20";
             default:
                 throw new IllegalStateException("Unknown Build.DEVICE " + Build.DEVICE);
         }
@@ -49,7 +50,8 @@ public class BoardDefaults {
                 return "IO6";
             case DEVICE_RPI3:
                 return "BCM21";
-            // TODO: DEVICE_NXP:
+            case DEVICE_NXP:
+                return "GPIO4_IO21";
             default:
                 throw new IllegalStateException("Unknown Build.DEVICE " + Build.DEVICE);
         }

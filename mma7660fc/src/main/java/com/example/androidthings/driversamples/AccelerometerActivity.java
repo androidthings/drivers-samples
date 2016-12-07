@@ -30,11 +30,11 @@ import com.google.android.things.contrib.driver.mma7660fc.Mma7660FcAccelerometer
 import java.io.IOException;
 
 /**
- * AccelerometerDemo is a sample activity that use an Accelerometer driver to
+ * AccelerometerActivity is a sample activity that use an Accelerometer driver to
  * read data from a Grove accelerator and log them.
  */
-public class AccelerometerDemo extends Activity implements SensorEventListener {
-    private static final String TAG = AccelerometerDemo.class.getSimpleName();
+public class AccelerometerActivity extends Activity implements SensorEventListener {
+    private static final String TAG = AccelerometerActivity.class.getSimpleName();
 
     private Mma7660FcAccelerometerDriver mAccelerometerDriver;
     private SensorManager mSensorManager;
@@ -50,7 +50,7 @@ public class AccelerometerDemo extends Activity implements SensorEventListener {
             public void onDynamicSensorConnected(Sensor sensor) {
                 if (sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
                     Log.i(TAG, "Accelerometer sensor connected");
-                    mSensorManager.registerListener(AccelerometerDemo.this, sensor,
+                    mSensorManager.registerListener(AccelerometerActivity.this, sensor,
                             SensorManager.SENSOR_DELAY_NORMAL);
                 }
             }

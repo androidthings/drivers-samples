@@ -18,20 +18,20 @@ package com.example.androidthings.driversamples;
 
 import android.os.Build;
 
+@SuppressWarnings("WeakerAccess")
 class BoardDefaults {
-
-    private BoardDefaults() {
-        //no instance
-    }
+    private static final String DEVICE_EDISON = "edison";
+    private static final String DEVICE_RPI3 = "rpi3";
+    private static final String DEVICE_NXP = "imx6ul";
 
     public static String getPwmPin() {
         switch (Build.DEVICE) {
-            case "edison":
+            case DEVICE_EDISON:
                 return "IO6";
-            case "rpi3":
+            case DEVICE_RPI3:
                 return "PWM0";
-            case "imx6ul":
-                return "??"; //TODO
+            case DEVICE_NXP:
+                return "PWM7";
             default:
                 throw new UnsupportedOperationException("Unknown device: " + Build.DEVICE);
         }
