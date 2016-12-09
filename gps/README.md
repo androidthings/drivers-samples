@@ -20,7 +20,7 @@ Pre-requisites
 Schematics
 ----------
 
-If using the Raspberry Pi Ultimate GPS Hat, just plug it onto your
+If using the [Raspberry Pi Ultimate GPS Hat](https://www.adafruit.com/product/2324), just plug it onto your
 Raspberry Pi 3.
 
 
@@ -29,7 +29,7 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, from this repository's root, type
+If you prefer to run on the command line, from this repository's root directory, type
 
 ```bash
 ./gradlew gps:installDebug

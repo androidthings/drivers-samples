@@ -1,4 +1,4 @@
-PWM Speaker Demo for Android Things
+PWM Speaker Sample for Android Things
 =============================================
 
 This sample demonstrates how to control a speaker/buzzer using PWM with
@@ -25,7 +25,7 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, from this repository's root, type
+If you prefer to run on the command line, from this repository's root directory, type
 
 ```bash
 ./gradlew pwmspeaker:installDebug

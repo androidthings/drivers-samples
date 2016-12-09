@@ -2,7 +2,7 @@ Segment display sample for Android Things
 =========================================
 
 This Android Things sample demonstrates how to use a segment display based on
-the ht16k33 chipset with an I2C backpack.
+the ht16k33 chip with an I2C backpack.
 
 
 Pre-requisites
@@ -26,7 +26,7 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, from this repository's root, type
+If you prefer to run on the command line, from this repository's root directory, type
 
 ```bash
 ./gradlew ht16k33:installDebug
