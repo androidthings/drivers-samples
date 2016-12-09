@@ -1,5 +1,5 @@
-Servo for Android Things
-========================
+Servo sample for Android Things
+===============================
 
 This sample demonstrates how to control a servo using PWM with Android Things.
 
@@ -25,10 +25,10 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, type
+If you prefer to run on the command line, from this repository's root, type
 
 ```bash
-./gradlew installDebug
+./gradlew pwmservo:installDebug
 adb shell am start com.example.androidthings.driversamples/.ServoActivity
 ```
 

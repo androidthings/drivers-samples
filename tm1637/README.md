@@ -1,14 +1,15 @@
-Grove 4-Digit Segment Display sample for Android Things
-=======================================================
+4-Digit Segment Display sample for Android Things
+=================================================
 
-This Android Things sample demonstrates how to use a Grove 4-Digit Segment Display based on the TM1637 IC.
+This Android Things sample demonstrates how to use a 4-Digit segment display
+based on the TM1637 IC.
 
 Pre-requisites
 --------------
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 [Grove 4-Digit Segment display](http://wiki.seeed.cc/Grove-4-Digit_Display/)
+- 1 4-Digit Segment display like [this](http://wiki.seeed.cc/Grove-4-Digit_Display/)
 - jumper wires
 - 1 breadboard
 
@@ -25,10 +26,10 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, type
+If you prefer to run on the command line, from this repository's root, type
 
 ```bash
-./gradlew installDebug
+./gradlew tm1637:installDebug
 adb shell am start com.example.androidthings.driversamples/.SegmentDisplayActivity
 ```
 

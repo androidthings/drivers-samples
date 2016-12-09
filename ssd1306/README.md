@@ -1,5 +1,5 @@
-OLED Screen Demo (SSD1306) for Android Things
-=============================================
+OLED Screen sample for Android Things
+=====================================
 
 This sample demonstrates how to control the SSD1306 OLED display using I2C with
 Android Things.
@@ -26,16 +26,17 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, type
+If you prefer to run on the command line, from this repository's root, type
 
 ```bash
-./gradlew installDebug
+./gradlew ssd1306:installDebug
 adb shell am start com.example.androidthings.driversamples/.OledScreenActivity
 ```
 
-If you have everything set up correctly, you will see a pattern displayed in the
-screen. If you are using an Edison, press the onboard RM and PWR buttons to
-change the pattern.
+If you have everything set up correctly, you will see a small bitmap slowly
+moving in the screen. If you want to change the pattern displayed, change the
+variable mMode in OledScreenActivity and deploy again. The sample has three
+modes: DOTS, BITMAP (default) and CROSSHAIRS.
 
 
 License

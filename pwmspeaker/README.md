@@ -9,7 +9,7 @@ Pre-requisites
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 [Speaker](https://www.adafruit.com/products/160)
+- 1 [Piezo Buzzer](https://www.adafruit.com/products/160)
 - jumper wires
 - 1 breadboard
 
@@ -25,19 +25,19 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, type
+If you prefer to run on the command line, from this repository's root, type
 
 ```bash
-./gradlew installDebug
+./gradlew pwmspeaker:installDebug
 adb shell am start com.example.androidthings.driversamples/.SpeakerActivity
 ```
 
-If you have everything set up correctly, you will hear the speaker play a series of notes. To play
-the tune again, re-run the app from AndroidStudio. If you prefer the command line, use
+If you have everything set up correctly, you will hear the speaker play a
+series of notes. To play the tune again, re-run the app from AndroidStudio.
+If you prefer the command line, run again with
 
 ```bash
-adb shell am force-stop com.example.androidthings.driversamples
-adb shell am start com.example.androidthings.driversamples/.SpeakerActivity
+adb shell am start -S com.example.androidthings.driversamples/.SpeakerActivity
 ```
 
 

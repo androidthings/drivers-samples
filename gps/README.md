@@ -1,8 +1,9 @@
-Segment display sample for Android Things
-=========================================
+UART GPS sample for Android Things
+==================================
 
-This Android Things sample demonstrates how to use a segment display based on
-the ht16k33 chipset with an I2C backpack.
+This Android Things sample demonstrates how to connect to a GPS unit that
+emits data via UART in the NMEA format, and integrates it into the Android
+location framework.
 
 
 Pre-requisites
@@ -10,15 +11,17 @@ Pre-requisites
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 [segment display with I2C backpack](https://www.adafruit.com/product/1270)
+- 1 GPS NMEA-compatible module with UART interface, like the
+  [Ultimate GPS hat](https://www.adafruit.com/product/2324)
 - jumper wires
 - 1 breadboard
+
 
 Schematics
 ----------
 
-![Schematics for Intel Edison](edison_schematics.png)
-![Schematics for Raspberry Pi 3](rpi3_schematics.png)
+If using the Raspberry Pi Ultimate GPS Hat, just plug it onto your
+Raspberry Pi 3.
 
 
 Build and install
@@ -29,11 +32,17 @@ On Android Studio, click on the "Run" button.
 If you prefer to run on the command line, from this repository's root, type
 
 ```bash
-./gradlew ht16k33:installDebug
-adb shell am start com.example.androidthings.driversamples/.SegmentDisplayActivity
+./gradlew gps:installDebug
+adb shell am start com.example.androidthings.driversamples/.GpsActivity
 ```
 
-If you have everything set up correctly, the segment display will show "ABCD".
+If you have everything set up correctly, a log will be generated on logcat
+whenever there is a location update.
+
+Notice that the GPS driver integrates with the Android location framework
+using a GpsDriver user driver and fuses with other location sources, so
+the part of the app that handles the location updates works exactly the same
+no matter which, or how many location sources are available.
 
 
 License

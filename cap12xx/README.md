@@ -1,8 +1,9 @@
-Segment display sample for Android Things
-=========================================
+Capacitive touch sample for Android Things
+============================================
 
-This Android Things sample demonstrates how to use a segment display based on
-the ht16k33 chipset with an I2C backpack.
+This Android Things sample demonstrates how to connect to a Capacitive Touch
+sensor based on a CAP12xx microchip and how to integrate it to the
+Android framework using an InputDriver.
 
 
 Pre-requisites
@@ -10,15 +11,16 @@ Pre-requisites
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 [segment display with I2C backpack](https://www.adafruit.com/product/1270)
+- 1 capacitive touch sensor based on a CAP12xx microchip like the
+  [Pimoroni Explorer Hat](https://www.adafruit.com/product/2427)
 - jumper wires
 - 1 breadboard
+
 
 Schematics
 ----------
 
-![Schematics for Intel Edison](edison_schematics.png)
-![Schematics for Raspberry Pi 3](rpi3_schematics.png)
+If using the Raspberry Pi Explorer Hat, just plug it onto your Raspberry Pi 3.
 
 
 Build and install
@@ -29,11 +31,18 @@ On Android Studio, click on the "Run" button.
 If you prefer to run on the command line, from this repository's root, type
 
 ```bash
-./gradlew ht16k33:installDebug
-adb shell am start com.example.androidthings.driversamples/.SegmentDisplayActivity
+./gradlew cap12xx:installDebug
+adb shell am start com.example.androidthings.driversamples/.CaptouchActivity
 ```
 
-If you have everything set up correctly, the segment display will show "ABCD".
+If you have everything set up correctly, pressing any of the 8 capacitive
+buttons labeled 1 to 8 on the Explorer Hat will log the corresponding button
+label to logcat.
+
+Notice that the Cap12xx driver integrates with the Android framework using an
+InputDriver user driver and simulates regular key presses, so the part of the
+app that handles the button presses works exactly the same as if it was a
+regular keyboard generating the key presses.
 
 
 License

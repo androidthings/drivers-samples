@@ -25,25 +25,26 @@ connect these pins to the power pins on the APA102 connector.
 Build and install
 =================
 
-On Android Studio, click on the "Run" button.
+On Android Studio, edit the `MainActivity.java` file and set the correct number
+of LEDs in your LED strip (constant `NUM_LEDS`).
 
-If you prefer to run on the command line, type
+Then, click on the "Run" button.
+
+If you prefer to run on the command line, from this repository's root, type
 
 ```bash
-./gradlew installDebug
+./gradlew apa102:installDebug
 adb shell am start com.example.androidthings.driversamples/.MainActivity
 ```
 
-Press the RM onboard button on the Edison. 
-When you press the button, the logs will indicate that
-the button was pressed and will then blink the LEDs in various patterns.
+The LEDs will blink in various patterns.
 
 
 Troubleshooting
 =================
 
 For a strip with more than a few LEDs, use an external power adapter for your
-Intel Edison, or power the LED strip from an external power source.
+board, or power the LED strip from an external power source.
 
 
 License

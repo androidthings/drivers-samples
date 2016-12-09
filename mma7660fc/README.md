@@ -1,14 +1,15 @@
 Accelerometer sample for Android Things
-============================================
+=======================================
 
-This Android Things sample demonstrates how to use a Grove Accelerometer MMA7660FC sensor.
+This Android Things sample demonstrates how to use the MMA7660FC accelerometer
+sensor and integrates it into the Android sensor framework.
 
 Pre-requisites
 --------------
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 [Grove Accelerometer MMA7660FC](http://wiki.seeed.cc/Grove-3-Axis_Digital_Accelerometer-1.5g/)
+- 1 [MMA7660FC accelerometer](http://wiki.seeed.cc/Grove-3-Axis_Digital_Accelerometer-1.5g/)
 - jumper wires
 - 1 breadboard
 
@@ -25,14 +26,20 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, type
+If you prefer to run on the command line, from this repository's root, type
 
 ```bash
-./gradlew installDebug
+./gradlew mma7660fc:installDebug
 adb shell am start com.example.androidthings.driversamples/.AccelerometerDemo
 ```
 
-If you have everything set up correctly, the segment display will show "ABCD".
+If you have everything set up correctly, a log will be generated on logcat
+whenever there is an accelerometer sensor update.
+
+Notice that the Accelerometer driver integrates with the Android sensor
+framework using a user driver and fuses with other accelerometer sources, so
+the part of the app that handles the sensor updates works exactly the same
+no matter which, or how many accelerometer sources are available.
 
 
 License
