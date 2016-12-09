@@ -2,24 +2,25 @@ Segment display sample for Android Things
 =========================================
 
 This Android Things sample demonstrates how to use a segment display based on
-the ht16k33 chip with an I2C backpack.
-
+the HT16K33 chip with an I2C backpack.
 
 Pre-requisites
 --------------
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 [segment display with I2C backpack](https://www.adafruit.com/product/1270)
-- jumper wires
-- 1 breadboard
+- [Rainbow Hat for Android Things](https://shop.pimoroni.com/products/rainbow-hat-for-android-things) or the following individual components:
+    - 1 [HT16K33 based segment display with I2C backpack](https://www.adafruit.com/product/1270)
+    - jumper wires
+    - 1 breadboard
 
 Schematics
 ----------
 
+If you have the Raspberry Pi [Rainbow Hat for Android Things](https://shop.pimoroni.com/products/rainbow-hat-for-android-things), just plug it onto your Raspberry Pi 3.
+
 ![Schematics for Intel Edison](edison_schematics.png)
 ![Schematics for Raspberry Pi 3](rpi3_schematics.png)
-
 
 Build and install
 =================
@@ -34,7 +35,6 @@ adb shell am start com.example.androidthings.driversamples/.SegmentDisplayActivi
 ```
 
 If you have everything set up correctly, the segment display will show "ABCD".
-
 
 License
 -------

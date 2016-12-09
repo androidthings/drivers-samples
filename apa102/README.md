@@ -10,11 +10,14 @@ Pre-requisites
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 [apa102 compatible RGB Led strip](https://www.adafruit.com/product/2241)
-
+- [Rainbow Hat for Android Things](https://shop.pimoroni.com/products/rainbow-hat-for-android-things) or the following individual components:
+    - 1 [APA102 compatible RGB Led strip](https://www.adafruit.com/product/2241)
+    - jumper wires
 
 Schematics
 ----------
+
+If you have the Raspberry Pi [Rainbow Hat for Android Things](https://shop.pimoroni.com/products/rainbow-hat-for-android-things), just plug it onto your Raspberry Pi 3.
 
 ![Schematics for Intel Edison](edison_schematics.png)
 ![Schematics for Raspberry Pi 3](rpi3_schematics.png)
@@ -39,13 +42,11 @@ adb shell am start com.example.androidthings.driversamples/.MainActivity
 
 The LEDs will blink in various patterns.
 
-
 Troubleshooting
 =================
 
 For a strip with more than a few LEDs, use an external power adapter for your
 board, or power the LED strip from an external power source.
-
 
 License
 -------
