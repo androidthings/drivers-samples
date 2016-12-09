@@ -30,7 +30,7 @@ import static android.content.ContentValues.TAG;
 
 public class SpeakerActivity extends Activity {
 
-    private static final long PLAYBACK_NOTE_DELAY = 120L;
+    private static final long PLAYBACK_NOTE_DELAY = 80L;
 
     private Speaker mSpeaker;
     private HandlerThread mHandlerThread;
@@ -85,11 +85,11 @@ public class SpeakerActivity extends Activity {
             }
 
             try {
-                if (index == MusicNotes.SMB_OVERWORLD_MAIN_THEME.length) {
+                if (index == MusicNotes.DRAMATIC_THEME.length) {
                     // reached the end
                     mSpeaker.stop();
                 } else {
-                    double note = MusicNotes.SMB_OVERWORLD_MAIN_THEME[index++];
+                    double note = MusicNotes.DRAMATIC_THEME[index++];
                     if (note > 0) {
                         mSpeaker.play(note);
                     } else {

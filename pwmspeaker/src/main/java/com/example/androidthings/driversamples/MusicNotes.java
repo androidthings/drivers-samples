@@ -19,13 +19,11 @@ package com.example.androidthings.driversamples;
 public class MusicNotes {
 
     public static final double REST = -1;
-    public static final double G4 = 392;
-    public static final double C5 = 523.25;
-    public static final double E5 = 659.25;
-    public static final double G5 = 783.99;
+    public static final double G4 = 391.995;
+    public static final double E4_FLAT = 311.127;
 
-    public static final double[] SMB_OVERWORLD_MAIN_THEME = {
-            E5, E5, REST, E5, REST, C5, E5, REST, G5, REST, REST, REST, G4
+    public static final double[] DRAMATIC_THEME = {
+            G4, REST, G4, REST, G4, REST, E4_FLAT, E4_FLAT
     };
 
     private MusicNotes() {
