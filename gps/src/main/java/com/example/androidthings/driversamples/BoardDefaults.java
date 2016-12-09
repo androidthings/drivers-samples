@@ -29,6 +29,7 @@ public class BoardDefaults {
      */
     public static String getUartName() {
         switch (Build.DEVICE) {
+            // same for Edison Arduino breakout and Edison SOM
             case DEVICE_EDISON:
                 return "UART1";
             case DEVICE_RPI3:
