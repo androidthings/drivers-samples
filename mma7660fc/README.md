@@ -9,7 +9,7 @@ Pre-requisites
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 [MMA7660FC accelerometer](http://wiki.seeed.cc/Grove-3-Axis_Digital_Accelerometer-1.5g/)
+- 1 [MMA7660FC based accelerometer](http://wiki.seeed.cc/Grove-3-Axis_Digital_Accelerometer-1.5g/)
 - jumper wires
 - 1 breadboard
 
@@ -26,7 +26,7 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, from this repository's root, type
+If you prefer to run on the command line, from this repository's root directory, type
 
 ```bash
 ./gradlew mma7660fc:installDebug
@@ -37,7 +37,7 @@ If you have everything set up correctly, a log will be generated on logcat
 whenever there is an accelerometer sensor update.
 
 Notice that the Accelerometer driver integrates with the Android sensor
-framework using a user driver and fuses with other accelerometer sources, so
+framework using a user driver and fuses with other sensors, so
 the part of the app that handles the sensor updates works exactly the same
 no matter which, or how many accelerometer sources are available.
 

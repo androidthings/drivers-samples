@@ -20,7 +20,7 @@ Pre-requisites
 Schematics
 ----------
 
-If using the Raspberry Pi Explorer Hat, just plug it onto your Raspberry Pi 3.
+If using the [Raspberry Pi Explorer Hat]((https://shop.pimoroni.com/products/explorer-hat), just plug it onto your Raspberry Pi 3.
 
 
 Build and install
@@ -28,7 +28,7 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, from this repository's root, type
+If you prefer to run on the command line, from this repository's root directory, type
 
 ```bash
 ./gradlew cap12xx:installDebug

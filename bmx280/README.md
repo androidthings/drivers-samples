@@ -2,7 +2,7 @@ Temperature sensor sample for Android Things
 ============================================
 
 This Android Things sample demonstrates how to use a BMP280 temperature sensor
-and integrate it to the Android SensorManager.
+and integrate it to the Android `SensorManager`.
 
 
 Pre-requisites
@@ -27,7 +27,7 @@ Build and install
 
 On Android Studio, click on the "Run" button.
 
-If you prefer to run on the command line, from this repository's root, type
+If you prefer to run on the command line, from this repository's root directory, type
 
 ```bash
 ./gradlew bmx280:installDebug

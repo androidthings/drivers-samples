@@ -30,7 +30,7 @@ of LEDs in your LED strip (constant `NUM_LEDS`).
 
 Then, click on the "Run" button.
 
-If you prefer to run on the command line, from this repository's root, type
+If you prefer to run on the command line, from this repository's root directory, type
 
 ```bash
 ./gradlew apa102:installDebug
