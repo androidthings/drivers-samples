@@ -47,8 +47,7 @@ public class TemperatureActivity extends Activity implements SensorEventListener
         mSensorManager.registerDynamicSensorCallback(new SensorManager.DynamicSensorCallback() {
             @Override
             public void onDynamicSensorConnected(Sensor sensor) {
-                if (sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE
-                        || sensor.getType() == Sensor.TYPE_TEMPERATURE) {
+                if (sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
                     Log.i(TAG, "Temperature sensor connected");
                     mSensorManager.registerListener(TemperatureActivity.this,
                             sensor, SensorManager.SENSOR_DELAY_NORMAL);
