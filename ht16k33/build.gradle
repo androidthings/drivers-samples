@@ -39,3 +39,16 @@ dependencies {
     compile 'com.google.android.things.contrib:driver-ht16k33:0.1'
     provided 'com.google.android.things:androidthings:0.1-preview'
 }
+
+repositories {
+    jcenter()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.1'
+    }
+}
