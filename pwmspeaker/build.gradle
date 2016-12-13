@@ -36,7 +36,7 @@ android {
 
 dependencies {
     compile 'com.google.android.things.contrib:driver-pwm-speaker:0.1'
-    provided 'com.google.android.things:androidthings:0.1-preview'
+    provided 'com.google.android.things:androidthings:0.1-devpreview'
 }
 
 repositories {
