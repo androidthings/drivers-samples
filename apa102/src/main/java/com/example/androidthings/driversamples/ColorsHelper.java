@@ -18,6 +18,8 @@ package com.example.androidthings.driversamples;
 
 import android.graphics.Color;
 
+import java.util.Arrays;
+
 /**
  * Helper class for managing an array of integers representing ARGB 32-bits color points as
  * defined in {@link Color}.
@@ -32,9 +34,7 @@ public class ColorsHelper {
      * @param color an integer representing an ARGB 32-bits color point
      */
     public static void setAllToColor(int[] colorArray, int color) {
-        for (int i = 0; i < colorArray.length; i++) {
-            colorArray[i] = color;
-        }
+        Arrays.fill(colorArray, color);
     }
 
     /**

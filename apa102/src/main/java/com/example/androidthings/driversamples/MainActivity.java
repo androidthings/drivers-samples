@@ -90,6 +90,7 @@ public class MainActivity extends Activity {
             animateColorBlink();
             animateColorRGB();
             animateColorRainbow();
+            mHandler.post(this);
         }
     };
 
@@ -135,7 +136,6 @@ public class MainActivity extends Activity {
             Log.e(TAG, "Error while blinking LEDs", e);
         }
     }
-
 
     /**
      * Alternates the LEDs with RGB colors.
