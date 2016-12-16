@@ -26,21 +26,24 @@ import android.util.Log;
 import com.google.android.things.contrib.driver.apa102.Apa102;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 /**
- * Sample activity that demonstrates controlling the RGB Led lights driver.
+ * Sample activity that demonstrates usage of the APA102 LED driver.
  */
 public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    // LED configuration
+    // LED configuration.
     private static final int NUM_LEDS = 7;
-    private static final int LED_BRIGHTNESS = 12; // 0 ... 31
+    private static final int LED_BRIGHTNESS = 5; // 0 ... 31
     private static final Apa102.Mode LED_MODE = Apa102.Mode.BGR;
 
-    private Apa102 mDriver;
+    // Animation configuration.
+    private static final int FRAME_DELAY_MS = 100; // 10fps
+
+    private Apa102 mLedstrip;
     private int[] mLedColors;
+    private int mFrame = 0;
     private Handler mHandler = new Handler();
     private HandlerThread mPioThread;
 
@@ -55,14 +58,13 @@ public class MainActivity extends Activity {
         mHandler = new Handler(mPioThread.getLooper());
 
         mLedColors = new int[NUM_LEDS];
-
         try {
-            mDriver = new Apa102(BoardDefaults.getSPIPort(), LED_MODE);
-            // Create and initialize the RGB LED object
-            mDriver.setBrightness(LED_BRIGHTNESS);
+            Log.d(TAG, "Initializing LED strip");
+            mLedstrip = new Apa102(BoardDefaults.getSPIPort(), LED_MODE);
+            mLedstrip.setBrightness(LED_BRIGHTNESS);
             mHandler.post(mAnimateRunnable);
         } catch (IOException e) {
-            Log.e(TAG, "Error initializing LED driver", e);
+            Log.e(TAG, "Error initializing LED strip", e);
         }
     }
 
@@ -72,125 +74,32 @@ public class MainActivity extends Activity {
         // Remove pending sensor Runnable from the handler.
         mHandler.removeCallbacks(mAnimateRunnable);
         mPioThread.quitSafely();
-        // Close the I2C device.
-        Log.d(TAG, "Closing Sensor device");
+        Log.d(TAG, "Closing LED strip");
         try {
-            mDriver.close();
+            mLedstrip.close();
         } catch (IOException e) {
-            Log.e(TAG, "Exception closing LED driver", e);
+            Log.e(TAG, "Exception closing LED strip", e);
         } finally {
-            mDriver = null;
+            mLedstrip = null;
         }
     }
 
     private Runnable mAnimateRunnable = new Runnable() {
         @Override
         public void run() {
-            Log.i(TAG, "Animating!");
-            animateColorBlink();
-            animateColorRGB();
-            animateColorRainbow();
-            mHandler.post(this);
+            try {
+                for (int i = 0; i < mLedColors.length; i++) { // Assigns gradient colors.
+                    int n = (i + mFrame) % mLedColors.length;
+                    float[] hsv = {n * 360.f / mLedColors.length, 1.0f, 1.0f};
+                    mLedColors[i] = Color.HSVToColor(0, hsv);
+                }
+                mLedstrip.write(mLedColors);
+                mFrame = (mFrame + 1) % mLedColors.length;
+            } catch (IOException e) {
+                Log.e(TAG, "Error while writing to LED strip", e);
+            }
+            mHandler.postDelayed(mAnimateRunnable, FRAME_DELAY_MS);
         }
     };
 
-    /**
-     * Blinks the RGB led strip with varying colors.
-     */
-    private void animateColorBlink() {
-        try {
-            Log.d(TAG, "CLEAR");
-            ColorsHelper.clear(mLedColors);
-            mDriver.write(mLedColors);
-            TimeUnit.SECONDS.sleep(1);
-
-            Log.d(TAG, "RED");
-            ColorsHelper.setAllToColor(mLedColors, Color.RED);
-            mDriver.write(mLedColors);
-            TimeUnit.SECONDS.sleep(1);
-
-            Log.d(TAG, "CLEAR");
-            ColorsHelper.clear(mLedColors);
-            mDriver.write(mLedColors);
-            TimeUnit.SECONDS.sleep(1);
-
-            Log.d(TAG, "GREEN");
-            ColorsHelper.setAllToColor(mLedColors, Color.GREEN);
-            mDriver.write(mLedColors);
-            TimeUnit.SECONDS.sleep(1);
-
-            Log.d(TAG, "CLEAR");
-            ColorsHelper.clear(mLedColors);
-            mDriver.write(mLedColors);
-            TimeUnit.SECONDS.sleep(1);
-
-            Log.d(TAG, "BLUE");
-            ColorsHelper.setAllToColor(mLedColors, Color.BLUE);
-            mDriver.write(mLedColors);
-            TimeUnit.SECONDS.sleep(1);
-
-            Log.d(TAG, "CLEAR");
-            ColorsHelper.clear(mLedColors);
-            mDriver.write(mLedColors);
-        } catch (IOException|InterruptedException e) {
-            Log.e(TAG, "Error while blinking LEDs", e);
-        }
-    }
-
-    /**
-     * Alternates the LEDs with RGB colors.
-     */
-    private void animateColorRGB() {
-        try {
-            for (int j = 0; j < mLedColors.length * 2; j++) { // Shifts RGB pattern.
-                for (int i = 0; i < mLedColors.length; i++) { // Sets RGB pattern.
-                    switch ((i + j) % 3) {
-                        case 0:
-                            mLedColors[i] = Color.RED;
-                            break;
-                        case 1:
-                            mLedColors[i] = Color.GREEN;
-                            break;
-                        case 2:
-                            mLedColors[i] = Color.BLUE;
-                            break;
-                        default:
-                            // Never should be reached.
-                            mLedColors[i] = Color.BLACK;
-                            break;
-                    }
-                }
-
-                mDriver.write(mLedColors);
-                // 10 FPS
-                TimeUnit.MILLISECONDS.sleep(100);
-            } // End loop over color shift
-        } catch (IOException|InterruptedException e) {
-            Log.e(TAG, "Exception while blinking RGB LED strip", e);
-        }
-    }
-
-    /**
-     * Blasts rainbow colors to the LED pins.
-     */
-    private void animateColorRainbow() {
-        try {
-            // Add data for LED colors R/G/B pattern
-            for (int j = 0; j < mLedColors.length * 10; j++) { // Shifts color gradient.
-                for (int i = 0; i < mLedColors.length; i++) { // Assigns gradient colors.
-                    mLedColors[i] = ColorsHelper.getRainbowColor(i + j);
-                }
-                mDriver.write(mLedColors);
-
-                // 10 FPS
-                TimeUnit.MILLISECONDS.sleep(100);
-            } // End loop over color shift
-
-            // Done, clear LEDs.
-            ColorsHelper.clear(mLedColors);
-            mDriver.write(mLedColors);
-        } catch (IOException|InterruptedException e) {
-            Log.e(TAG, "Error while writing rainbow to RGB LED strip", e);
-        }
-    }
 }
