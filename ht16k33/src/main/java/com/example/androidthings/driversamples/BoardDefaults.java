@@ -27,7 +27,7 @@ public class BoardDefaults {
     private static final String DEVICE_EDISON_ARDUINO = "edison_arduino";
     private static final String DEVICE_EDISON = "edison";
     private static final String DEVICE_RPI3 = "rpi3";
-    private static final String DEVICE_NXP = "imx6ul";
+    private static final String DEVICE_NXP = "imx6ul_pico";
     private static String sBoardVariant = "";
 
     /**
