@@ -22,6 +22,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.hardware.SensorManager.DynamicSensorCallback;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -38,22 +39,24 @@ public class TemperatureActivity extends Activity implements SensorEventListener
     private Bmx280SensorDriver mTemperatureSensorDriver;
     private SensorManager mSensorManager;
 
+    private DynamicSensorCallback mDynamicSensorCallback = new DynamicSensorCallback() {
+        @Override
+        public void onDynamicSensorConnected(Sensor sensor) {
+            if (sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
+                Log.i(TAG, "Temperature sensor connected");
+                mSensorManager.registerListener(TemperatureActivity.this,
+                        sensor, SensorManager.SENSOR_DELAY_NORMAL);
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "Starting TemperatureActivity");
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mSensorManager.registerDynamicSensorCallback(new SensorManager.DynamicSensorCallback() {
-            @Override
-            public void onDynamicSensorConnected(Sensor sensor) {
-                if (sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
-                    Log.i(TAG, "Temperature sensor connected");
-                    mSensorManager.registerListener(TemperatureActivity.this,
-                            sensor, SensorManager.SENSOR_DELAY_NORMAL);
-                }
-            }
-        });
+        mSensorManager.registerDynamicSensorCallback(mDynamicSensorCallback);
 
         try {
             mTemperatureSensorDriver = new Bmx280SensorDriver(BoardDefaults.getI2CPort());
@@ -68,6 +71,7 @@ public class TemperatureActivity extends Activity implements SensorEventListener
         super.onDestroy();
         Log.i(TAG, "Closing sensor");
         if (mTemperatureSensorDriver != null) {
+            mSensorManager.unregisterDynamicSensorCallback(mDynamicSensorCallback);
             mSensorManager.unregisterListener(this);
             mTemperatureSensorDriver.unregisterTemperatureSensor();
             try {
