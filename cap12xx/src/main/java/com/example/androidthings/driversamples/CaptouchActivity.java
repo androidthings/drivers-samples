@@ -47,11 +47,8 @@ public class CaptouchActivity extends Activity {
         };
 
         try {
-            mInputDriver = new Cap12xxInputDriver(this,
-                    BoardDefaults.getI2CPort(),
-                    null,
-                    Cap12xx.Configuration.CAP1208,
-                    keyCodes);
+            mInputDriver = new Cap12xxInputDriver(BoardDefaults.getI2CPort(), null,
+                    Cap12xx.Configuration.CAP1208, keyCodes);
 
             // Disable repeated events
             mInputDriver.setRepeatRate(Cap12xx.REPEAT_DISABLE);
@@ -81,8 +78,20 @@ public class CaptouchActivity extends Activity {
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return handleKeyEvent(keyCode, true) || super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        // Handle key events from captouch inputs
+        return handleKeyEvent(keyCode, false) || super.onKeyUp(keyCode, event);
+    }
+
+    /**
+     * Handle key events from captouch inputs
+     */
+    private boolean handleKeyEvent(int keyCode, boolean pressed) {
+        String event = pressed ? "pressed" : "released";
         switch (keyCode) {
             case KeyEvent.KEYCODE_1:
             case KeyEvent.KEYCODE_2:
@@ -92,11 +101,11 @@ public class CaptouchActivity extends Activity {
             case KeyEvent.KEYCODE_6:
             case KeyEvent.KEYCODE_7:
             case KeyEvent.KEYCODE_8:
-                Log.d(TAG, "Captouch key released: " + event.getKeyCode());
+                Log.d(TAG, String.format("Captouch key %s: %d", event, keyCode));
                 return true;
             default:
-                Log.d(TAG, "Unknown key released: " + keyCode);
-                return super.onKeyUp(keyCode, event);
+                Log.d(TAG, String.format("Unknown key %s: %d", event, keyCode));
+                return false;
         }
     }
 }
