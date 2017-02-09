@@ -23,6 +23,10 @@ Schematics
 If using the [Raspberry Pi Ultimate GPS Hat](https://www.adafruit.com/product/2324), just plug it onto your
 Raspberry Pi 3.
 
+NOTE: on Raspberry Pi 3 you need to disable the serial debugging console using
+the following [instructions][pi3-instructions] in order for the driver to be
+able to access the UART port.
+
 
 Build and install
 =================
@@ -64,3 +68,5 @@ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 License for the specific language governing permissions and limitations under
 the License.
+
+[pi3-instructions]: https://developer.android.com/things/hardware/raspberrypi.html#disabling_the_console
