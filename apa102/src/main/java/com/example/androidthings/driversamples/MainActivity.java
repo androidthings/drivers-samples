@@ -85,12 +85,14 @@ public class MainActivity extends Activity {
     }
 
     private Runnable mAnimateRunnable = new Runnable() {
+        final float[] hsv = {1f, 1f, 1f};
+
         @Override
         public void run() {
             try {
                 for (int i = 0; i < mLedColors.length; i++) { // Assigns gradient colors.
                     int n = (i + mFrame) % mLedColors.length;
-                    float[] hsv = {n * 360.f / mLedColors.length, 1.0f, 1.0f};
+                    hsv[0] = n * 360.f / mLedColors.length;
                     mLedColors[i] = Color.HSVToColor(0, hsv);
                 }
                 mLedstrip.write(mLedColors);
