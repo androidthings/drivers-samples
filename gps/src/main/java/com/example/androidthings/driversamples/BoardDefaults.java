@@ -21,8 +21,10 @@ import android.os.Build;
 @SuppressWarnings("WeakerAccess")
 public class BoardDefaults {
     private static final String DEVICE_EDISON = "edison";
+    private static final String DEVICE_JOULE = "joule";
     private static final String DEVICE_RPI3 = "rpi3";
-    private static final String DEVICE_NXP = "imx6ul_pico";
+    private static final String DEVICE_PICO = "imx6ul_pico";
+    private static final String DEVICE_VVDN = "imx6ul_iopb";
 
     /**
      * Return the UART for current board.
@@ -32,10 +34,14 @@ public class BoardDefaults {
             // same for Edison Arduino breakout and Edison SOM
             case DEVICE_EDISON:
                 return "UART1";
+            case DEVICE_JOULE:
+                return "UART1";
             case DEVICE_RPI3:
                 return "UART0";
-            case DEVICE_NXP:
+            case DEVICE_PICO:
                 return "UART3";
+            case DEVICE_VVDN:
+                return "UART2";
             default:
                 throw new IllegalStateException("Unknown Build.DEVICE " + Build.DEVICE);
         }
