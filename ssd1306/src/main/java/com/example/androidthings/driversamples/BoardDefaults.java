@@ -26,8 +26,10 @@ import java.util.List;
 public class BoardDefaults {
     private static final String DEVICE_EDISON_ARDUINO = "edison_arduino";
     private static final String DEVICE_EDISON = "edison";
+    private static final String DEVICE_JOULE = "joule";
     private static final String DEVICE_RPI3 = "rpi3";
-    private static final String DEVICE_NXP = "imx6ul_pico";
+    private static final String DEVICE_PICO = "imx6ul_pico";
+    private static final String DEVICE_VVDN = "imx6ul_iopb";
     private static String sBoardVariant = "";
 
     /**
@@ -39,10 +41,14 @@ public class BoardDefaults {
                 return "I2C6";
             case DEVICE_EDISON:
                 return "I2C1";
+            case DEVICE_JOULE:
+                return "I2C0";
             case DEVICE_RPI3:
                 return "I2C1";
-            case DEVICE_NXP:
+            case DEVICE_PICO:
                 return "I2C2";
+            case DEVICE_VVDN:
+                return "I2C4";
             default:
                 throw new IllegalStateException("Unknown Build.DEVICE " + Build.DEVICE);
         }
