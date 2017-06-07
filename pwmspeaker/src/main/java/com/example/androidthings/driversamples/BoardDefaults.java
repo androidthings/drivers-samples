@@ -44,7 +44,7 @@ public class BoardDefaults {
             case DEVICE_RPI3:
                 return "PWM1";
             case DEVICE_IMX6UL_PICO:
-                return "PWM7";
+                return "PWM8";
             case DEVICE_IMX6UL_VVDN:
                 return "PWM3";
             case DEVICE_IMX7D_PICO:
