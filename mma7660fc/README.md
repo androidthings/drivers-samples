@@ -30,7 +30,7 @@ If you prefer to run on the command line, from this repository's root directory,
 
 ```bash
 ./gradlew mma7660fc:installDebug
-adb shell am start com.example.androidthings.driversamples/.AccelerometerDemo
+adb shell am start com.example.androidthings.driversamples/.AccelerometerActivity
 ```
 
 If you have everything set up correctly, a log will be generated on logcat
