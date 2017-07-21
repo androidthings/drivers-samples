@@ -19,6 +19,7 @@
 
     <!-- Permissions for LocationManager updates -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="com.google.android.things.permission.MANAGE_GPS_DRIVERS"/>
 
     <application
         android:allowBackup="true"
