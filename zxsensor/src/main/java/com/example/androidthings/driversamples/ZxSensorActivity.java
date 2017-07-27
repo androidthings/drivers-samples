@@ -14,14 +14,21 @@
  * limitations under the License.
  */
 
-include ':bmx280'
-include ':cap12xx'
-include ':gps'
-include ':ht16k33'
-include ':tm1637'
-include ':apa102'
-include ':pwmspeaker'
-include ':pwmservo'
-include ':ssd1306'
-include ':mma7660fc'
-include ':zxsensor'
+package com.example.androidthings.driversamples;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.util.Log;
+
+import com.google.android.things.contrib.driver.pwmspeaker.Speaker;
+
+import java.io.IOException;
+
+import static android.content.ContentValues.TAG;
+
+public class ZxSensorActivity extends Activity {
+
+
+}
