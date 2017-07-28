@@ -48,18 +48,18 @@ public class ZxSensorActivity extends Activity {
 
         if (EXAMPLE_I2C) {
             try {
-                zxSensorI2c = ZxSensor.Factory.openViaI2c("I2C1", "GPIO23");
+                zxSensorI2c = ZxSensor.Factory.openViaI2c(BoardDefaults.getI2CPin(), BoardDefaults.getGpioPin());
             } catch (IOException e) {
-                throw new IllegalStateException("Can't open, did you use the correct bus & pin names?", e);
+                throw new IllegalStateException("Can't open, did you use the correct pin names?", e);
             }
             zxSensorI2c.setSwipeLeftListener(swipeLeftListener);
             zxSensorI2c.setSwipeRightListener(swipeRightListener);
 
         } else {
             try {
-                zxSensorUart = ZxSensor.Factory.openViaUart("UART1");
+                zxSensorUart = ZxSensor.Factory.openViaUart(BoardDefaults.getUartPin());
             } catch (IOException e) {
-                throw new IllegalStateException("Can't open, did you use the correct bus name?", e);
+                throw new IllegalStateException("Can't open, did you use the correct pin name?", e);
             }
             zxSensorUart.setSwipeLeftListener(swipeLeftListener);
             zxSensorUart.setSwipeRightListener(swipeRightListener);
