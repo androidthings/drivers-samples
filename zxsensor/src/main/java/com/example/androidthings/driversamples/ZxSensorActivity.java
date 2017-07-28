@@ -18,17 +18,120 @@ package com.example.androidthings.driversamples;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.google.android.things.contrib.driver.pwmspeaker.Speaker;
+import com.google.android.things.contrib.driver.zxsensor.ZxSensor;
+import com.google.android.things.contrib.driver.zxsensor.ZxSensorI2c;
+import com.google.android.things.contrib.driver.zxsensor.ZxSensorUart;
 
 import java.io.IOException;
 
-import static android.content.ContentValues.TAG;
-
+/**
+ * ZxSensorActivity is an example that uses the driver
+ * for the ZX Distance & Gesture Sensor. You can use i2c or UART (UART recommend only for debugging or POC).
+ */
 public class ZxSensorActivity extends Activity {
 
+    private static final String TAG = ZxSensorActivity.class.getSimpleName();
+    /**
+     * Toggle this to see the I2C or UART examples
+     */
+    private static final boolean EXAMPLE_I2C = true;
 
+    private ZxSensorI2c zxSensorI2c;
+    private ZxSensorUart zxSensorUart;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (EXAMPLE_I2C) {
+            try {
+                zxSensorI2c = ZxSensor.Factory.openViaI2c("I2C1", "GPIO23");
+            } catch (IOException e) {
+                throw new IllegalStateException("Can't open, did you use the correct bus & pin names?", e);
+            }
+            zxSensorI2c.setSwipeLeftListener(swipeLeftListener);
+            zxSensorI2c.setSwipeRightListener(swipeRightListener);
+
+        } else {
+            try {
+                zxSensorUart = ZxSensor.Factory.openViaUart("UART1");
+            } catch (IOException e) {
+                throw new IllegalStateException("Can't open, did you use the correct bus name?", e);
+            }
+            zxSensorUart.setSwipeLeftListener(swipeLeftListener);
+            zxSensorUart.setSwipeRightListener(swipeRightListener);
+        }
+    }
+
+    private final ZxSensor.SwipeLeftListener swipeLeftListener = new ZxSensor.SwipeLeftListener() {
+        @Override
+        public void onSwipeLeft(int speed) {
+            logSwipe("left", speed);
+        }
+    };
+
+    private final ZxSensor.SwipeRightListener swipeRightListener = new ZxSensor.SwipeRightListener() {
+        @Override
+        public void onSwipeRight(int speed) {
+            logSwipe("right", speed);
+        }
+    };
+
+    private void logSwipe(String direction, int speed) {
+        String msg = "Hey you swiped " + direction;
+        switch (speed) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                msg += " slowly.";
+                break;
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+                msg += " quickly.";
+                break;
+            case 8:
+            case 9:
+            case 10:
+            default:
+                msg += " very quickly.";
+                break;
+        }
+        Log.d(TAG, msg);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (EXAMPLE_I2C) {
+            zxSensorI2c.startMonitoringGestures();
+        } else {
+            zxSensorUart.startMonitoringGestures();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        if (EXAMPLE_I2C) {
+            zxSensorI2c.stopMonitoringGestures();
+        } else {
+            zxSensorUart.stopMonitoringGestures();
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (EXAMPLE_I2C) {
+            zxSensorI2c.close();
+        } else {
+            zxSensorUart.close();
+        }
+        super.onDestroy();
+    }
 }
