@@ -35,20 +35,19 @@ public class BoardDefaults {
 
     public static String getUartPin() {
         switch (getBoardVariant()) {
-            case DEVICE_EDISON_ARDUINO:
-                return "UART1";
+            // same for Edison Arduino breakout and Edison SOM
             case DEVICE_EDISON:
                 return "UART1";
             case DEVICE_JOULE:
-                return "UART_1";
+                return "UART1";
             case DEVICE_RPI3:
-                return "UART1";
+                return "UART0";
             case DEVICE_IMX6UL_PICO:
-                return "UART1";
+                return "UART3";
             case DEVICE_IMX6UL_VVDN:
-                return "UART1";
+                return "UART2";
             case DEVICE_IMX7D_PICO:
-                return "UART1";
+                return "UART6";
             default:
                 throw new UnsupportedOperationException("Unknown device: " + Build.DEVICE);
         }
@@ -57,19 +56,19 @@ public class BoardDefaults {
     public static String getGpioPin() {
         switch (getBoardVariant()) {
             case DEVICE_EDISON_ARDUINO:
-                return "IO23";
+                return "IO7";
             case DEVICE_EDISON:
-                return "GP23";
+                return "GP45";
             case DEVICE_JOULE:
-                return "GP23";
+                return "FLASH_TRIGGER";
             case DEVICE_RPI3:
                 return "BCM23";
             case DEVICE_IMX6UL_PICO:
-                return "23";
+                return "GPIO4_IO23";
             case DEVICE_IMX6UL_VVDN:
-                return "23";
+                return "GPIO3_IO01";
             case DEVICE_IMX7D_PICO:
-                return "23";
+                return "GPIO_174";
             default:
                 throw new UnsupportedOperationException("Unknown device: " + Build.DEVICE);
         }
@@ -78,19 +77,19 @@ public class BoardDefaults {
     public static String getI2CPin() {
         switch (getBoardVariant()) {
             case DEVICE_EDISON_ARDUINO:
-                return "I2C";
+                return "I2C6";
             case DEVICE_EDISON:
-                return "I2C";
+                return "I2C1";
             case DEVICE_JOULE:
-                return "I2C_0";
+                return "I2C0";
             case DEVICE_RPI3:
                 return "I2C1";
             case DEVICE_IMX6UL_PICO:
-                return "I2C7";
-            case DEVICE_IMX6UL_VVDN:
-                return "I2C3";
-            case DEVICE_IMX7D_PICO:
                 return "I2C2";
+            case DEVICE_IMX6UL_VVDN:
+                return "I2C4";
+            case DEVICE_IMX7D_PICO:
+                return "I2C1";
             default:
                 throw new UnsupportedOperationException("Unknown device: " + Build.DEVICE);
         }
