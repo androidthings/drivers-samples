@@ -45,6 +45,8 @@ public class ZxSensorActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "Activity started, swipe your hand over the sensor.");
+        Log.d(TAG, "Demoing " + (EXAMPLE_I2C ? "I2C" : "UART"));
 
         if (EXAMPLE_I2C) {
             try {
