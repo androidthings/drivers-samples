@@ -81,28 +81,7 @@ public class ZxSensorActivity extends Activity {
     };
 
     private void logSwipe(String direction, int speed) {
-        String msg = "Hey you swiped " + direction;
-        switch (speed) {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-                msg += " slowly.";
-                break;
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-                msg += " quickly.";
-                break;
-            case 8:
-            case 9:
-            case 10:
-            default:
-                msg += " very quickly.";
-                break;
-        }
-        Log.d(TAG, msg);
+        Log.d(TAG, "Hey you swiped " + direction + " with velocity " + speed);
     }
 
     @Override
