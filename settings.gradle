@@ -1,5 +1,5 @@
 /*
- * Copyright 2016, The Android Open Source Project
+ * Copyright 2017, The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
+include ':apa102'
 include ':bmx280'
 include ':cap12xx'
 include ':gps'
 include ':ht16k33'
-include ':tm1637'
-include ':apa102'
+include ':matrixkeypad'
+include ':mma7660fc'
 include ':pwmspeaker'
 include ':pwmservo'
 include ':ssd1306'
-include ':mma7660fc'
+include ':tm1637'
