@@ -1,18 +1,15 @@
-Android Things driver samples
-=============================
+# Android Things driver samples
 
 Samples for Android Things peripheral drivers.
 
-Build and install
-=================
+## Build and install
 
 Open the project in Android Studio, select the "Run Configuration" for the
 sample you want to run and click the "Run" button.
 
 See each sample subdirectory `README.md` for more instructions.
 
-License
--------
+## License
 
 Copyright 2016 Google Inc.
 
