@@ -33,7 +33,7 @@ public class BoardDefaults {
         switch (Build.DEVICE) {
             // same for Edison Arduino breakout and Edison SOM
             case DEVICE_EDISON:
-                return "SPI2";
+                return "SPI2.1";
             case DEVICE_JOULE:
                 return "SPI0.0";
             case DEVICE_RPI3:
