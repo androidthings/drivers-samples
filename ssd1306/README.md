@@ -17,7 +17,6 @@ Pre-requisites
 Schematics
 ----------
 
-![Schematics for Intel Edison](edison_schematics.png)
 ![Schematics for Raspberry Pi 3](rpi3_schematics.png)
 
 
