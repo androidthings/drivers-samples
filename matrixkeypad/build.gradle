@@ -36,6 +36,6 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.google.android.things:androidthings:0.6-devpreview'
-    implementation 'com.google.android.things.contrib:driver-matrixkeypad:0.1'
+    compileOnly 'com.google.android.things:androidthings:0.7-devpreview'
+    implementation 'com.google.android.things.contrib:driver-matrixkeypad:0.2'
 }
