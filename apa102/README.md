@@ -5,6 +5,13 @@ This Android Things sample demonstrates how to interface with a basic
 RGB led strip using the APA102 over SPI protocol.
 
 
+Screenshots
+-----------
+
+![RGB LED strip sample demo][demo-gif]
+
+[(Watch the demo on YouTube)][demo-yt]
+
 Pre-requisites
 --------------
 
@@ -66,3 +73,6 @@ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 License for the specific language governing permissions and limitations under
 the License.
+
+[demo-yt]: https://www.youtube.com/watch?v=HGhk9xm7qig&index=15&list=PLWz5rJ2EKKc-GjpNkFe9q3DhE2voJscDT
+[demo-gif]: https://storage.googleapis.com/android-things/samples-gifs/apa102.gif

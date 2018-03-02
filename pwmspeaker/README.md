@@ -4,6 +4,14 @@ PWM Speaker Sample for Android Things
 This sample demonstrates how to control a speaker/buzzer using PWM with
 Android Things.
 
+
+Screenshots
+-----------
+
+![PWM Speaker sample demo][demo-gif]
+
+[(Watch the demo on YouTube)][demo-yt]
+
 Pre-requisites
 --------------
 
@@ -60,3 +68,6 @@ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 License for the specific language governing permissions and limitations under
 the License.
+
+[demo-yt]: https://www.youtube.com/watch?v=T81zZpaO8qU&index=21&list=PLWz5rJ2EKKc-GjpNkFe9q3DhE2voJscDT
+[demo-gif]: https://storage.googleapis.com/android-things/samples-gifs/pwmspeaker.gif

@@ -4,6 +4,14 @@
 This Android Things sample demonstrates how to use a 4-Digit segment display
 based on the TM1637 IC.
 
+
+Screenshots
+-----------
+
+![4-Digit Segment Display sample demo][demo-gif]
+
+[(Watch the demo on YouTube)][demo-yt]
+
 Pre-requisites
 --------------
 
@@ -53,3 +61,6 @@ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 License for the specific language governing permissions and limitations under
 the License.
+
+[demo-yt]: https://www.youtube.com/watch?v=fUwTR3X9BdE&index=23&list=PLWz5rJ2EKKc-GjpNkFe9q3DhE2voJscDT
+[demo-gif]: https://storage.googleapis.com/android-things/samples-gifs/tm1637.png

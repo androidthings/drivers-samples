@@ -4,6 +4,14 @@ Segment display sample for Android Things
 This Android Things sample demonstrates how to use a segment display based on
 the HT16K33 chip with an I2C backpack.
 
+
+Screenshots
+-----------
+
+![Segment display sample demo][demo-gif]
+
+[(Watch the demo on YouTube)][demo-yt]
+
 Pre-requisites
 --------------
 
@@ -54,3 +62,6 @@ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 License for the specific language governing permissions and limitations under
 the License.
+
+[demo-yt]: https://www.youtube.com/watch?v=OiPkBVN_ulc&index=19&list=PLWz5rJ2EKKc-GjpNkFe9q3DhE2voJscDT
+[demo-gif]: https://storage.googleapis.com/android-things/samples-gifs/ht16k33.png

@@ -6,6 +6,13 @@ emits data via UART in the NMEA format, and integrates it into the Android
 location framework.
 
 
+Screenshots
+-----------
+
+![UART GPS sample demo][demo-gif]
+
+[(Watch the demo on YouTube)][demo-yt]
+
 Pre-requisites
 --------------
 
@@ -68,3 +75,5 @@ License for the specific language governing permissions and limitations under
 the License.
 
 [pi3-modes]: https://developer.android.com/things/hardware/raspberrypi-mode-matrix.html
+[demo-yt]: https://www.youtube.com/watch?v=ld-06RYRZVQ&index=18&list=PLWz5rJ2EKKc-GjpNkFe9q3DhE2voJscDT
+[demo-gif]: https://storage.googleapis.com/android-things/samples-gifs/gps.gif
