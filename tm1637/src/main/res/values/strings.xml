@@ -15,5 +15,5 @@
  limitations under the License.
 -->
 <resources>
-    <string name="app_name">SegmentDisplay demo</string>
+    <string name="app_name">NumericDisplay demo</string>
 </resources>

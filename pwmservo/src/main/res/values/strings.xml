@@ -15,5 +15,5 @@
  limitations under the License.
 -->
 <resources>
-    <string name="app_name">Servo</string>
+    <string name="app_name">Servo demo</string>
 </resources>

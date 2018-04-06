@@ -15,5 +15,5 @@
  limitations under the License.
 -->
 <resources>
-    <string name="app_name">pwm-speaker</string>
+    <string name="app_name">Speaker Demo</string>
 </resources>
