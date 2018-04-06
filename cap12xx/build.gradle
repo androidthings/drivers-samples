@@ -17,13 +17,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 27
 
     defaultConfig {
         applicationId "com.example.androidthings.driversamples"
-        minSdkVersion 26
-        targetSdkVersion 25
+        minSdkVersion 27
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -37,6 +36,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.things.contrib:driver-cap12xx:0.5'
-    compileOnly 'com.google.android.things:androidthings:0.7-devpreview'
+    implementation 'com.google.android.things.contrib:driver-cap12xx:0.6'
+    compileOnly 'com.google.android.things:androidthings:0.8-devpreview'
 }
