@@ -16,16 +16,9 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.androidthings.driversamples">
-
-    <application
-        android:allowBackup="true"
-        android:icon="@android:drawable/sym_def_app_icon"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@android:style/Theme.DeviceDefault">
-
+    <uses-permission android:name="com.google.android.things.permission.USE_PERIPHERAL_IO"/>
+    <application android:label="@string/app_name">
         <uses-library android:name="com.google.android.things"/>
-
         <activity android:name=".SpeakerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,5 +33,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

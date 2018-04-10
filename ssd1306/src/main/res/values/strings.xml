@@ -15,5 +15,5 @@
  limitations under the License.
 -->
 <resources>
-    <string name="app_name">OLED Screen (SSD1306) Demo</string>
+    <string name="app_name">OledScreen Demo</string>
 </resources>
