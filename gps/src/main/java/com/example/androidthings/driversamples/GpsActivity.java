@@ -19,9 +19,11 @@ package com.example.androidthings.driversamples;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.location.GnssStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.OnNmeaMessageListener;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -60,6 +62,8 @@ public class GpsActivity extends Activity {
             // Register for location updates
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                     0, 0, mLocationListener);
+            mLocationManager.registerGnssStatusCallback(mStatusCallback);
+            mLocationManager.addNmeaListener(mMessageListener);
         } catch (IOException e) {
             Log.w(TAG, "Unable to open GPS UART", e);
         }
@@ -80,7 +84,8 @@ public class GpsActivity extends Activity {
             // Unregister components
             mGpsDriver.unregister();
             mLocationManager.removeUpdates(mLocationListener);
-
+            mLocationManager.unregisterGnssStatusCallback(mStatusCallback);
+            mLocationManager.removeNmeaListener(mMessageListener);
             try {
                 mGpsDriver.close();
             } catch (IOException e) {
@@ -89,6 +94,7 @@ public class GpsActivity extends Activity {
         }
     }
 
+    /** Report location updates */
     private LocationListener mLocationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
@@ -103,5 +109,30 @@ public class GpsActivity extends Activity {
 
         @Override
         public void onProviderDisabled(String provider) { }
+    };
+
+    /** Report satellite status */
+    private GnssStatus.Callback mStatusCallback = new GnssStatus.Callback() {
+        @Override
+        public void onStarted() { }
+
+        @Override
+        public void onStopped() { }
+
+        @Override
+        public void onFirstFix(int ttffMillis) { }
+
+        @Override
+        public void onSatelliteStatusChanged(GnssStatus status) {
+            Log.v(TAG, "GNSS Status: " + status.getSatelliteCount() + " satellites.");
+        }
+    };
+
+    /** Report raw NMEA messages */
+    private OnNmeaMessageListener mMessageListener = new OnNmeaMessageListener() {
+        @Override
+        public void onNmeaMessage(String message, long timestamp) {
+            Log.v(TAG, "NMEA: " + message);
+        }
     };
 }
