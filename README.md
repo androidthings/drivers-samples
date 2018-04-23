@@ -1,6 +1,7 @@
-# Android Things driver samples
+# Driver Samples
 
-Samples for Android Things peripheral drivers.
+Samples for Android Things peripheral drivers located in the
+[https://github.com/androidthings/contrib-drivers](contrib repository).
 
 ## Build and install
 
