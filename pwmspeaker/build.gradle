@@ -34,6 +34,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.things.contrib:driver-pwmspeaker:0.5'
+    implementation 'com.google.android.things.contrib:driver-pwmspeaker:1.0'
     compileOnly 'com.google.android.things:androidthings:1.0'
 }
