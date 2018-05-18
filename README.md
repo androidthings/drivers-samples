@@ -1,4 +1,4 @@
-# Driver Samples
+# Peripheral Driver Samples
 
 Samples for Android Things peripheral drivers located in the
 [https://github.com/androidthings/contrib-drivers](contrib repository).
