@@ -56,7 +56,7 @@ public class OledScreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            mScreen = new Ssd1306(BoardDefaults.getI2CPort());
+            mScreen = new Ssd1306(BoardDefaults.getI2CPort(), Ssd1306.I2C_ADDRESS_SA0_HIGH);
         } catch (IOException e) {
             Log.e(TAG, "Error while opening screen", e);
             throw new RuntimeException(e);
