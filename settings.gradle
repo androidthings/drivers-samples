@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+include ':ads1015'
 include ':apa102'
 include ':bmx280'
 include ':cap12xx'
