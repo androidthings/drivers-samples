@@ -17,7 +17,7 @@
 include ':ads1015'
 include ':apa102'
 include ':bmx280'
-include ':cap12xx'
+include ':cap1xxx'
 include ':gps'
 include ':ht16k33'
 include ':matrixkeypad'
