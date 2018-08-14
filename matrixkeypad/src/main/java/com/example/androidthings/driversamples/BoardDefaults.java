@@ -20,17 +20,16 @@ import android.os.Build;
 
 public class BoardDefaults {
     private static final String DEVICE_RPI3 = "rpi3";
-    private static final String DEVICE_IMX6UL_PICO = "imx6ul_pico";
+    private static final String DEVICE_RPI3BP = "rpi3bp";
     private static final String DEVICE_IMX7D_PICO = "imx7d_pico";
 
     public static String[] getRowPins() {
         switch (Build.DEVICE) {
             case DEVICE_RPI3:
+            case DEVICE_RPI3BP:
                 return new String[] {"BCM27", "BCM5", "BCM6", "BCM26"};
             case DEVICE_IMX7D_PICO:
                 return new String[] {"GPIO2_IO03", "GPIO2_IO01", "GPIO2_IO02", "GPIO2_IO05"};
-            case DEVICE_IMX6UL_PICO:
-                return new String[] {"GPIO4_IO23", "GPIO4_IO21", "GPIO4_IO22", "GPIO4_IO18"};
             default:
                 throw new UnsupportedOperationException("Unknown device: " + Build.DEVICE);
         }
@@ -39,11 +38,10 @@ public class BoardDefaults {
     public static String[] getColPins() {
         switch (Build.DEVICE) {
             case DEVICE_RPI3:
+            case DEVICE_RPI3BP:
                 return new String[] {"BCM16", "BCM24", "BCM23"};
             case DEVICE_IMX7D_PICO:
                 return new String[] {"GPIO2_IO07", "GPIO6_IO12", "GPIO6_IO13"};
-            case DEVICE_IMX6UL_PICO:
-                return new String[] {"GPIO5_IO02", "GPIO2_IO01", "GPIO2_IO00"};
             default:
                 throw new UnsupportedOperationException("Unknown device: " + Build.DEVICE);
         }
