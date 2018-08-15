@@ -21,15 +21,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 
-import com.google.android.things.contrib.driver.cap12xx.Cap12xx;
-import com.google.android.things.contrib.driver.cap12xx.Cap12xxInputDriver;
+import com.google.android.things.contrib.driver.cap1xxx.Cap1xxx;
+import com.google.android.things.contrib.driver.cap1xxx.Cap1xxxInputDriver;
 
 import java.io.IOException;
 
 public class CaptouchActivity extends Activity {
     private static final String TAG = "CaptouchActivity";
 
-    private Cap12xxInputDriver mInputDriver;
+    private Cap1xxxInputDriver mInputDriver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +47,11 @@ public class CaptouchActivity extends Activity {
         };
 
         try {
-            mInputDriver = new Cap12xxInputDriver(BoardDefaults.getI2CPort(), null,
-                    Cap12xx.Configuration.CAP1208, keyCodes);
+            mInputDriver = new Cap1xxxInputDriver(BoardDefaults.getI2CPort(), null,
+                    Cap1xxx.Configuration.CAP1208, keyCodes);
 
             // Disable repeated events
-            mInputDriver.setRepeatRate(Cap12xx.REPEAT_DISABLE);
+            mInputDriver.setRepeatRate(Cap1xxx.REPEAT_DISABLE);
             // Block touches above 4 unique inputs
             mInputDriver.setMultitouchInputMax(4);
 

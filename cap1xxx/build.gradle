@@ -36,6 +36,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.things.contrib:driver-cap12xx:1.0'
+    implementation 'com.google.android.things.contrib:driver-cap1xxx:2.0'
     compileOnly 'com.google.android.things:androidthings:1.0'
 }

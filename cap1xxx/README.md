@@ -2,7 +2,7 @@ Capacitive touch sample for Android Things
 ============================================
 
 This Android Things sample demonstrates how to connect to a Capacitive Touch
-sensor based on a CAP12xx microchip and how to integrate it to the
+sensor based on a CAP1xxx microchip and how to integrate it to the
 Android framework using an InputDriver.
 
 
@@ -18,7 +18,7 @@ Pre-requisites
 
 - Android Things compatible board
 - Android Studio 2.2+
-- 1 capacitive touch sensor based on a CAP12xx microchip like the
+- 1 capacitive touch sensor based on a CAP1xxx microchip like the
   [Pimoroni Explorer Hat](https://www.adafruit.com/product/2427)
 - jumper wires
 - 1 breadboard
@@ -38,7 +38,7 @@ On Android Studio, click on the "Run" button.
 If you prefer to run on the command line, from this repository's root directory, type
 
 ```bash
-./gradlew cap12xx:installDebug
+./gradlew cap1xxx:installDebug
 adb shell am start com.example.androidthings.driversamples/.CaptouchActivity
 ```
 
