@@ -38,5 +38,5 @@ android {
 
 dependencies {
     compileOnly 'com.google.android.things:androidthings:1.0'
-    implementation 'com.google.android.things.contrib:driver-adc:2.0'
+    implementation 'com.google.android.things.contrib:driver-adc:2.1'
 }
