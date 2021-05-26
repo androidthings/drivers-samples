@@ -3,6 +3,10 @@
 Samples for Android Things peripheral drivers located in the
 [contrib-drivers repository](https://github.com/androidthings/contrib-drivers).
 
+> **Note:** The Android Things Console will be turned down for non-commercial
+> use on January 5, 2022. For more details, see the
+> [FAQ page](https://developer.android.com/things/faq).
+
 ## Build and install
 
 Open the project in Android Studio, select the "Run Configuration" for the
